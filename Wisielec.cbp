@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/liballeg.a" />
@@ -25,6 +26,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -36,6 +38,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="game_errors.hpp" />
+		<Unit filename="game_mechanics.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

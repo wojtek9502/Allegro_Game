@@ -16,10 +16,13 @@ bool game_quit_bool = false;
 
 int main()
 {
-    ///@TODO trzebaby stworzyc w game_mechanics.hpp mape obiektów Word. Mo¿naby wtedy
+    ///wektor slow
     vector<Word> words;
-    words.push_back(Word("a","b","c","d"));
-    cout << words[0].category;
+    ///wypelnij wektor
+    words = generate_words(words);
+    ///test wylosuj i wypisz kategorie.
+    int i = rand_id(words.size());
+    cout << words[i].category;
 
 
     cout << "Press ESC to exit or click QUIT" << endl;
