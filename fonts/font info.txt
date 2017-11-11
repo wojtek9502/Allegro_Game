@@ -1,0 +1,2 @@
+If you want change font download http://www.allegro.cc/files/ttf2pcx.zip
+export font and save it as a "hud_font.pcx" for HUD or word_font.pcx for word.

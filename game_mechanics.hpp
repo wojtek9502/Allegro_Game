@@ -31,7 +31,7 @@ void print()
 
 };
 
-int rand_id(int vector_size)
+int rand_word_id(int vector_size)
 {
     srand(time(NULL));
     return rand()%vector_size;
@@ -40,7 +40,7 @@ int rand_id(int vector_size)
 
  vector<Word> generate_words( vector<Word>& words)
 {
-    ///dodawanie slow tutaj wg wzoru (id,slowo,kategoria,litery_do_usuniecia, gotowe slowo)
+    ///dodawanie slow tutaj wg wzoru (id, slowo, kategoria, litery_do_usuniecia, gotowe slowo)
 
     words.push_back(Word(0,"SPRZEDAWCA","ZAWOD","EWCA","SPRZ_DA___"));
     words.push_back(Word(1,"KARTOFEL","WARZYWO","AROEL","K__T_F__"));

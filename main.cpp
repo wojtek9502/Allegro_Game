@@ -26,21 +26,26 @@ int main()
     clear_to_color(screen, makecol(0,0,0));
     show_mouse( screen );
 
+    FONT *hud_font = load_font("fonts/hud_font.pcx",NULL,NULL);
+        if(!hud_font) { font_error("fonts/hud_font.pcx"); }
+    FONT *word_font = load_font("fonts/word_font.pcx",NULL,NULL);
+        if(!word_font) { font_error("fonts/word_font.pcx"); }
+
     ////Wczytywanie bitmap
     ///bufor
     BITMAP *bufor = create_bitmap(SCREEN_WIDTH,SCREEN_HEIGHT);
 
     ///bitmapa menu
     BITMAP *menu =  load_bitmap("img/menu.bmp", default_palette);
-    if(!menu){ bitmap_error("img/menu.bmp"); }
+        if(!menu){ bitmap_error("img/menu.bmp"); }
 
     ///bitmapa menu_new_game
     BITMAP *menu_new_game =  load_bitmap("img/menu_new_game.bmp", default_palette);
-    if(!menu){ bitmap_error("img/menu_new_game.bmp"); }
+        if(!menu){ bitmap_error("img/menu_new_game.bmp"); }
 
     ///bitmapa menu_quit
     BITMAP *menu_quit =  load_bitmap("img/menu_quit.bmp", default_palette);
-    if(!menu){ bitmap_error("img/menu_quit.bmp"); }
+        if(!menu){ bitmap_error("img/menu_quit.bmp"); }
 
     ///
 
@@ -78,8 +83,6 @@ int main()
     }
 
     //##################################################---GRA---###########################
-
-
     if(new_game_clicked == true)
     {
         int lifes = 5;
@@ -89,7 +92,7 @@ int main()
         ///wypelnij wektor slow
         words = generate_words(words);
         ///wylosuj slowo
-        int word_number = rand_id(words.size());
+        int word_number = rand_word_id(words.size());
 
         ///POBIERANIE WARTOSCI POTRZEBNYCH DO GRY Z KLASY I KONWERSJA NA CHAR[]
         const char* charCategory = get_data_and_conv(words, word_number, "category", charCategory);
@@ -112,18 +115,15 @@ int main()
             if(key[KEY_ESC])
                 game_quit_bool = true;
 
-            ///pobierz kategorie
-            textout_ex( screen, font, "Kategoria:", 20, 20, makecol( 234, 247, 0 ), - 1 );
+            textout_ex( screen, hud_font, "Kategoria:", 20, 20, makecol( 234, 247, 0 ), - 1 );
             //text_length() zwraca ilosc pikseli w napisie slowa
-            textout_ex( screen, font, charCategory, text_length(font, "Kategoria:")+40, 20, makecol( 234, 247, 0 ), - 1 );
+            textout_ex( screen, hud_font, charCategory, text_length(hud_font, "Kategoria:")+30, 20, makecol( 234, 247, 0 ), - 1 );
 
-            textout_ex( screen, font, "Wylosowano slowo:", 20, 40, makecol( 234, 247, 0 ), - 1 );
-            textout_ex( screen, font, charWordToPlay, text_length(font, "Wylosowano slowo:")+40, 40, makecol( 234, 247, 0 ), - 1 );
+            textout_ex( screen, hud_font, "Pozostalo zyc:", 620, 20, makecol( 234, 247, 0 ), - 1 );
+            textout_ex( screen, hud_font, int_to_const_char(lifes), 620+text_length(hud_font, "Pozostalo zyc:")+10, 20 , makecol( 234, 247, 0 ), - 1 );
 
-            textout_ex( screen, font, "Pozostalo zyc:", 500, 20, makecol( 234, 247, 0 ), - 1 );
-            textout_ex( screen, font, int_to_const_char(lifes), 500+text_length(font, "Pozostalo zyc:")+10, 20 , makecol( 234, 247, 0 ), - 1 );
-
-
+            int word_x = (SCREEN_WIDTH/2)-(text_length(word_font,charWordToPlay)/2);
+            textout_ex( screen, word_font, charWordToPlay, word_x, 500, makecol( 234, 247, 0 ), - 1 );
 
         }
     }
