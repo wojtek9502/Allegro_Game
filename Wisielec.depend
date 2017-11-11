@@ -2,16 +2,21 @@
 1510402234 source:c:\users\wojtek\documents\codeblocks\wisielec\main.cpp
 	<allegro.h>
 
-1510423363 source:c:\users\wojtek\documents\github\allegro_game\main.cpp
+1510424231 source:c:\users\wojtek\documents\github\allegro_game\main.cpp
 	<iostream>
 	<allegro.h>
 	<time.h>
 	"game_errors.hpp"
 	"game_mechanics.hpp"
-	<map>
+	<vector>
 
 1510405808 c:\users\wojtek\documents\github\allegro_game\game_errors.hpp
 
-1510421574 c:\users\wojtek\documents\github\allegro_game\game_mechanics.hpp
-	<map>
+1510424232 c:\users\wojtek\documents\github\allegro_game\game_mechanics.hpp
+	<string>
+	<iostream>
+
+1510423430 source:c:\users\wojtek\documents\github\allegro_game\src\word.cpp
+	<string>
+	<iostream>
 
