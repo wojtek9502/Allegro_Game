@@ -6,6 +6,8 @@
 #define SCREEN_HEIGHT 600
 using namespace std;
 
+bool quit = false;
+
 int main()
 {
     cout << "Press ESC to exit" << endl;
@@ -37,26 +39,36 @@ int main()
 
 
 
-
-    while( !key[ KEY_ESC ] )
+    ///PETLA GLOWNA GRY
+    while( quit == false )
     {
-        ///po najechaniu na new_game wczytaj menu_new_game.bmp
+        if(key[KEY_ESC])
+            quit = true;
+
+        ///OBSLUGA MENU
+        ///po najechaniu na new_game narysuj menu_new_game.bmp, po kliknieciu graj
         if(mouse_x > 242 && mouse_x < 628 && mouse_y > 274 && mouse_y < 323)
         {
             draw_sprite(screen, menu_new_game, 0, 0);
+            if(mouse_b == 1)
+                cout << "Kliknieto new game " << endl;
         }
-        ///po najechaniu na quit wczytaj menu_quit.bmp
+        ///po najechaniu na quit narysuj menu_quit.bmp, po kliknieciu wyjdz
         else if(mouse_x > 242 && mouse_x < 410 && mouse_y > 350 && mouse_y < 414)
         {
             draw_sprite(screen, menu_quit, 0, 0);
+            if(mouse_b == 1)
+                quit = true;
         }
-        ///gdy poza napisami wczytaj zwykle menu
+        ///gdy poza napisami narysuj zwykle menu
         else
         draw_sprite(screen, menu, 0, 0);
 
+        ///GRA
+
     }
 
-    readkey();
+
     destroy_bitmap(menu);
     destroy_bitmap(menu_new_game);
     destroy_bitmap(menu_quit);
