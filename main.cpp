@@ -16,15 +16,6 @@ bool game_quit_bool = false;
 
 int main()
 {
-    ///wektor slow
-    vector<Word> words;
-    ///wypelnij wektor
-    words = generate_words(words);
-    ///test wylosuj i wypisz kategorie.
-    int i = rand_id(words.size());
-    cout << words[i].category;
-
-
     cout << "Press ESC to exit or click QUIT" << endl;
     allegro_init();
     install_keyboard();
@@ -87,8 +78,26 @@ int main()
     }
 
     //##################################################---GRA---###########################
+
+
     if(new_game_clicked == true)
     {
+        int lifes = 5;
+        ///wektor slow
+        vector<Word> words;
+
+        ///wypelnij wektor slow
+        words = generate_words(words);
+        ///wylosuj slowo
+        int word_number = rand_id(words.size());
+
+        ///POBIERANIE WARTOSCI POTRZEBNYCH DO GRY Z KLASY I KONWERSJA NA CHAR[]
+        const char* charCategory = get_data_and_conv(words, word_number, "category", charCategory);
+        const char* charWordToPlay = get_data_and_conv(words, word_number, "wordToPlay", charWordToPlay);
+
+
+
+
         cout << "Zaczeto nowa gre";
         //rysujemy gre i usuwamy stare bitmapy menu
         draw_sprite(screen, bufor, 0, 0);
@@ -102,9 +111,21 @@ int main()
         {
             if(key[KEY_ESC])
                 game_quit_bool = true;
+
+            ///pobierz kategorie
+            textout_ex( screen, font, "Kategoria:", 20, 20, makecol( 234, 247, 0 ), - 1 );
+            //text_length() zwraca ilosc pikseli w napisie slowa
+            textout_ex( screen, font, charCategory, text_length(font, "Kategoria:")+40, 20, makecol( 234, 247, 0 ), - 1 );
+
+            textout_ex( screen, font, "Wylosowano slowo:", 20, 40, makecol( 234, 247, 0 ), - 1 );
+            textout_ex( screen, font, charWordToPlay, text_length(font, "Wylosowano slowo:")+40, 40, makecol( 234, 247, 0 ), - 1 );
+
+            textout_ex( screen, font, "Pozostalo zyc:", 500, 20, makecol( 234, 247, 0 ), - 1 );
+            textout_ex( screen, font, int_to_const_char(lifes), 500+text_length(font, "Pozostalo zyc:")+10, 20 , makecol( 234, 247, 0 ), - 1 );
+
+
+
         }
-
-
     }
     else
     {
