@@ -2,6 +2,9 @@
 #include <allegro.h>
 #include <time.h>
 #include "game_errors.hpp"
+#include "game_mechanics.hpp"
+#include <map>
+
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 using namespace std;
@@ -10,8 +13,41 @@ bool menu_quit_bool = false;
 bool new_game_clicked = false;
 bool game_quit_bool = false;
 
+class Word{
+public:
+    string word;
+    string category;
+    string delLetters;
+    string wordToPlay;
+
+Word(string word, string category, string delLetters, string wordToPlay)
+{
+    this->word = word;
+    this->category = category;
+    this->delLetters = delLetters;
+    this->wordToPlay = wordToPlay;
+}
+
+string getWord() { return(word); }
+string getCategory() { return(category); }
+string getDelLetters() { return(delLetters); }
+string getWordToPlay() { return(wordToPlay); }
+
+
+
+void print()
+{
+    cout<< word + category + delLetters +wordToPlay;
+}
+
+};
+
+
+
 int main()
 {
+    Word w1 = Word("a","b","c","d");
+
     cout << "Press ESC to exit or click QUIT" << endl;
     allegro_init();
     install_keyboard();
