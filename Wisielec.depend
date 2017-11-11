@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1510402234 source:c:\users\wojtek\documents\codeblocks\wisielec\main.cpp
+	<allegro.h>
+
+1510412075 source:c:\users\wojtek\documents\github\allegro_game\main.cpp
+	<iostream>
+	<allegro.h>
+	<time.h>
+	"game_errors.hpp"
+
+1510405808 c:\users\wojtek\documents\github\allegro_game\game_errors.hpp
+
