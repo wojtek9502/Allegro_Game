@@ -25,14 +25,14 @@ int main()
     if(!menu){
         bitmap_error("img/menu.bmp");
     }
-    int menu_x = 100;
-    int menu_y = 100;
-    draw_sprite(screen, menu, menu_x,menu_y);
+    draw_sprite(screen, menu, 0,0);
 
 
 
     readkey();
+    destroy_bitmap(menu);
     allegro_exit();
+
     return 0;
 }
 END_OF_MAIN();
