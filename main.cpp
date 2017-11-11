@@ -13,7 +13,10 @@ bool menu_quit_bool = false;
 bool new_game_clicked = false;
 bool game_quit_bool = false;
 
-
+/*@TODO
+uzupelnianie kresek po wprowadzeniu poprawnej litery
+poprawic odswiezanie ekranu
+*/
 int main()
 {
     cout << "Press ESC to exit or click QUIT" << endl;
@@ -127,6 +130,25 @@ int main()
         //##### PETLA GRY
         while(game_quit_bool == false)
         {
+
+
+            if(lifes==0)
+            {
+                clear_to_color(bufor, makecol(0, 0, 0));
+                draw_sprite(screen, bufor, 0, 0);
+                textout_ex( screen, word_font, "GAME OVER", (SCREEN_WIDTH/2)-100, 500, makecol( 255, 0, 0 ), - 1 );
+                 masked_blit( hangman5, screen, 0, 0, 200, 100, hangman5->w, hangman5->h );
+
+                readkey();
+                game_quit_bool = true;
+                destroy_bitmap(hangman1);
+                destroy_bitmap(hangman2);
+                destroy_bitmap(hangman3);
+                destroy_bitmap(hangman4);
+                destroy_bitmap(hangman5);
+                continue;
+            }
+
             if(key[KEY_ESC])
                 game_quit_bool = true;
 
@@ -144,14 +166,48 @@ int main()
             ///Reakcja na nacisniecie klawisza (konwersja na duza litere)
             int pressed_key = readkey()-32;
             pressed_key_info(pressed_key);
-            if(check_letter(pressed_key)==true)
+
+            ///wektor na indeksy znalezionych liter
+            vector<int> positions_vector;
+
+            //sprawdz czy wcisnieta litera zwiera sie w slowe
+            //jesli nie to zwroc false jesli tak to zwroc wektor pozycji liter w wyrazie i zwroc true
+            bool is_found = check_letter(pressed_key,words,word_number, positions_vector );
+            print_position_vector(positions_vector);
+
+            if(is_found == true)
             {
-                //dodaj litere
+                //dodaj litere do tekstu
+                charWordToPlay = "zrobic uzupelnianie kresek";
             }
             else
             {
+                lifes--;
+                switch(lifes)
+                {
+                    case 4:
+                    {
+                       masked_blit( hangman1, screen, 0, 0, 200, 100, hangman1->w, hangman2->h );
+                    }break;
+
+                    case 3:
+                    {
+                       masked_blit( hangman2, screen, 0, 0, 200, 100, hangman2->w, hangman2->h );
+                    }break;
+
+                    case 2:
+                    {
+                       masked_blit( hangman3, screen, 0, 0, 200, 100, hangman3->w, hangman3->h );
+                    }break;
+
+                    case 1:
+                    {
+                       masked_blit( hangman4, screen, 0, 0, 200, 100, hangman4->w, hangman4->h );
+                    }break;
+                }
                 //odbierz zycie i narysuj wisielca
             }
+
 
             //masked_blit( hangman1, screen, 0, 0, 170, 110, hangman1->w, hangman1->h );
 
