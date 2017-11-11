@@ -141,7 +141,19 @@ int main()
             textout_ex( screen, word_font, charWordToPlay, word_x, 500, makecol( 234, 247, 0 ), - 1 );
 
 
-            masked_blit( hangman5, screen, 0, 0, 170, 110, hangman5->w, hangman5->h );
+            ///Reakcja na nacisniecie klawisza (konwersja na duza litere)
+            int pressed_key = readkey()-32;
+            pressed_key_info(pressed_key);
+            if(check_letter(pressed_key)==true)
+            {
+                //dodaj litere
+            }
+            else
+            {
+                //odbierz zycie i narysuj wisielca
+            }
+
+            //masked_blit( hangman1, screen, 0, 0, 170, 110, hangman1->w, hangman1->h );
 
 
             //readkey();

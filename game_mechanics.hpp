@@ -75,5 +75,10 @@ int rand_word_id(int vector_size)
     return cstr2;
  }
 
+ const char* pressed_key_info(int key)
+ {
+    cout << endl << "Nacisnieto klawisz: " << static_cast < char >( key );
+ }
+
 
 #endif // GAME_MECHANICS_HPP_INCLUDED
