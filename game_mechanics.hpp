@@ -42,9 +42,9 @@ int rand_word_id(int vector_size)
 {
     ///dodawanie slow tutaj wg wzoru (id, slowo, kategoria, litery_do_usuniecia, gotowe slowo)
 
-    words.push_back(Word(0,"SPRZEDAWCA","ZAWOD","EWCA","SPRZ_DA___"));
-    words.push_back(Word(1,"KARTOFEL","WARZYWO","AROEL","K__T_F__"));
-    words.push_back(Word(2,"MATEMATYKA","PRZEDMIOT SZKOLNY","ATEY","M___M___K_"));
+    words.push_back(Word(0,"SPRZEDAWCA","ZAWOD","EWCA","SPRZ-DA---"));
+    words.push_back(Word(1,"KARTOFEL","WARZYWO","AROEL","K--T-F--"));
+    words.push_back(Word(2,"MATEMATYKA","PRZEDMIOT SZKOLNY","ATEY","M---M---K-"));
     return words;
 }
 

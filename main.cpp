@@ -47,7 +47,23 @@ int main()
     BITMAP *menu_quit =  load_bitmap("img/menu_quit.bmp", default_palette);
         if(!menu){ bitmap_error("img/menu_quit.bmp"); }
 
-    ///
+    ///##########################BITMAPY WISIELCA
+    BITMAP *hangman1 =  load_bitmap("img/hangman1.bmp", default_palette);
+        if(!menu){ bitmap_error("img/hangman1.bmp"); }
+
+    BITMAP *hangman2 =  load_bitmap("img/hangman2.bmp", default_palette);
+        if(!menu){ bitmap_error("img/hangman2.bmp"); }
+
+    BITMAP *hangman3 =  load_bitmap("img/hangman3.bmp", default_palette);
+        if(!menu){ bitmap_error("img/hangman3.bmp"); }
+
+    BITMAP *hangman4 =  load_bitmap("img/hangman4.bmp", default_palette);
+        if(!menu){ bitmap_error("img/hangman4.bmp"); }
+
+    BITMAP *hangman5 =  load_bitmap("img/hangman5.bmp", default_palette);
+        if(!menu){ bitmap_error("img/hangman5.bmp"); }
+
+
 
 
     //################################################-----PETLA MENU-----#######################################3
@@ -100,7 +116,6 @@ int main()
 
 
 
-
         cout << "Zaczeto nowa gre";
         //rysujemy gre i usuwamy stare bitmapy menu
         draw_sprite(screen, bufor, 0, 0);
@@ -125,14 +140,28 @@ int main()
             int word_x = (SCREEN_WIDTH/2)-(text_length(word_font,charWordToPlay)/2);
             textout_ex( screen, word_font, charWordToPlay, word_x, 500, makecol( 234, 247, 0 ), - 1 );
 
+
+            masked_blit( hangman5, screen, 0, 0, 170, 110, hangman5->w, hangman5->h );
+
+
+            //readkey();
+            //destroy_bitmap(hangman1)
+
+
+
         }
     }
     else
     {
-        //nie weszlo w nowa gre ale bitmapy menu by wypadalo usunac
+        //nie weszlo w nowa gre ale bitmapy by wypadalo usunac
         destroy_bitmap(menu);
         destroy_bitmap(menu_new_game);
         destroy_bitmap(menu_quit);
+        destroy_bitmap(hangman1);
+        destroy_bitmap(hangman2);
+        destroy_bitmap(hangman3);
+        destroy_bitmap(hangman4);
+        destroy_bitmap(hangman5);
     }
 
 
