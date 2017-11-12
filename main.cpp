@@ -14,10 +14,7 @@ bool menu_quit_bool = false;
 bool new_game_clicked = false;
 bool game_quit_bool = false;
 
-/*@TODO
-uzupelnianie kresek po wprowadzeniu poprawnej litery
-poprawic odswiezanie ekranu
-*/
+
 int main()
 {
     cout << "Press ESC to exit or click QUIT" << endl;
@@ -210,7 +207,7 @@ int main()
             ///Reakcja na nacisniecie klawisza (konwersja na duza litere)
             int pressed_key = readkey();
             pressed_key-=32;
-            cout << (char)pressed_key;
+            //cout << (char)pressed_key;
 
 
             ///wektor na indeksy znalezionych liter
