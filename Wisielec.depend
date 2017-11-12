@@ -23,3 +23,20 @@
 	<string>
 	<iostream>
 
+1510503917 source:c:\users\koste\onedrive\informatyka\semestr 5\grafika komputerowa\laboratorium michal\silnik_2d\allegro_game\main.cpp
+	<iostream>
+	<allegro.h>
+	<time.h>
+	<string.h>
+	"game_errors.hpp"
+	"game_mechanics.hpp"
+	<vector>
+
+1510510151 c:\users\koste\onedrive\informatyka\semestr 5\grafika komputerowa\laboratorium michal\silnik_2d\allegro_game\game_errors.hpp
+
+1510510322 c:\users\koste\onedrive\informatyka\semestr 5\grafika komputerowa\laboratorium michal\silnik_2d\allegro_game\game_mechanics.hpp
+	<string>
+	<sstream>
+	<iostream>
+	<vector>
+

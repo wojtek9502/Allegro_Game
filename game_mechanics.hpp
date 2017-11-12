@@ -50,7 +50,7 @@ int rand_word_id(int vector_size)
     words.push_back(Word(5,"KIERUNKOWSKAZ","ELEMENT AUTA","KIERUNKOWKA","---------S--Z"));
     words.push_back(Word(6,"STOKROTKA","KWIAT","STOKROTKA","---------"));
     words.push_back(Word(7,"KANCELARIA","MIEJSCE","KANCELA","-------RI-"));
-    words.push_back(Word(8,"PROKURATOR","OSOBA","PROKURATOR","----------"));
+    words.push_back(Word(8,"PROKURATOR","ZAWOD","PROKURATOR","----------"));
     words.push_back(Word(9,"INFORMATYKA","NAUKA","INFORMATYKA","-----------"));
     words.push_back(Word(10,"KAZACHSTAN","PANSTWO","KAZACHSTAN","----------"));
     words.push_back(Word(11,"FRANKFURT","MIASTO","FRANKFRT","------U--"));
@@ -58,6 +58,10 @@ int rand_word_id(int vector_size)
     words.push_back(Word(13,"NIETZSCHE","FILOZOF","NIETSCHE","----Z----"));
     words.push_back(Word(14,"GOWIN","MINISTER","GOWIN","-----"));
     words.push_back(Word(15,"KLAWIATURA","URZADZENIE","KLAWIATURA","----------"));
+    words.push_back(Word(16,"ALGORYTM","METODA DZIALANIA","ALGORYTM","--------"));
+    words.push_back(Word(17,"ROSLINA","ZYWE I ZIELONE","RSLINA","-O-----"));
+    words.push_back(Word(18,"PRZEMEK","NIE LUBI ALLEGRO","PRZEMEK","-------"));
+    words.push_back(Word(19,"RODZYNKI","SA W CIESCIE","ROZYNKI","--D-----"));
     return words;
 }
 
