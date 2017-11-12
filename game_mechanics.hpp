@@ -45,6 +45,8 @@ int rand_word_id(int vector_size)
     words.push_back(Word(0,"SPRZEDAWCA","ZAWOD","EWCA","SPRZ-D----"));
     words.push_back(Word(1,"KARTOFEL","WARZYWO","AROEL","K--T-F--"));
     words.push_back(Word(2,"MATEMATYKA","PRZEDMIOT SZKOLNY","ATEY","M---M---K-"));
+    words.push_back(Word(3,"BIEDRONKA","ZWIERZE","BIERONA","---D---K-"));
+    words.push_back(Word(4,"PENDRIVE","URZADZENIE","PENDIVE","----R---"));
     return words;
 }
 
@@ -89,7 +91,9 @@ bool check_letter(int pressed_key, vector<Word>& words, int p_word_number, vecto
     string delLetters = get_del_letters(words,p_word_number);
     string word = get_word(words,p_word_number);
 
-    //cout << "    Brakuje: " << delLetters << "     Cale slowo to: " << word;
+
+    cout << endl << "Wcisnieto " << (char)pressed_key << "    Brakuje: " << delLetters << "     Cale slowo to: " << word;
+
 
     ///szukanie znaku
     position = word.find( c_pressed_key);

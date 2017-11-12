@@ -208,7 +208,10 @@ int main()
 
             ///############## INTERAKCJA Z USEREM
             ///Reakcja na nacisniecie klawisza (konwersja na duza litere)
-            int pressed_key = readkey()-32;
+            int pressed_key = readkey();
+            pressed_key-=32;
+            cout << (char)pressed_key;
+
 
             ///wektor na indeksy znalezionych liter
             vector<int> positions_vector;
