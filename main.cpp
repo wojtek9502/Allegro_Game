@@ -50,6 +50,10 @@ int main()
     BITMAP *menu_quit =  load_bitmap("img/menu_quit.bmp", default_palette);
         if(!menu){ bitmap_error("img/menu_quit.bmp"); }
 
+    ///bitmapa wygranej
+    BITMAP *win =  load_bitmap("img/win.bmp", default_palette);
+        if(!menu){ bitmap_error("img/win.bmp"); }
+
     ///##########################BITMAPY WISIELCA
     BITMAP *hangman1 =  load_bitmap("img/hangman1.bmp", default_palette);
         if(!menu){ bitmap_error("img/hangman1.bmp"); }
@@ -65,8 +69,6 @@ int main()
 
     BITMAP *hangman5 =  load_bitmap("img/hangman5.bmp", default_palette);
         if(!menu){ bitmap_error("img/hangman5.bmp"); }
-
-
 
 
     //################################################-----PETLA MENU-----#######################################3
@@ -153,6 +155,24 @@ int main()
                 }break;
             }
 
+            ///sprawdzanie wygranej
+            if(check_win(words, word_number) == true)
+            {
+                clear_to_color(screen, makecol(0, 0, 0));
+                textout_ex( screen, word_font, "YOU WIN", (SCREEN_WIDTH/2)-100, 500, makecol( 234, 247, 0 ), - 1 );
+                masked_blit( win, screen, 0, 0, 200, 100, win->w, win->h );
+
+                readkey();
+                game_quit_bool = true;
+                destroy_bitmap(hangman1);
+                destroy_bitmap(hangman2);
+                destroy_bitmap(hangman3);
+                destroy_bitmap(hangman4);
+                destroy_bitmap(hangman5);
+                destroy_bitmap(win);
+                continue;
+            }
+
             ///jesli brak zyc
             if(lifes==0)
             {
@@ -167,6 +187,7 @@ int main()
                 destroy_bitmap(hangman3);
                 destroy_bitmap(hangman4);
                 destroy_bitmap(hangman5);
+                destroy_bitmap(win);
                 continue;
             }
 
@@ -223,6 +244,7 @@ int main()
         destroy_bitmap(hangman3);
         destroy_bitmap(hangman4);
         destroy_bitmap(hangman5);
+        destroy_bitmap(win);
     }
 
 

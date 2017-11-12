@@ -143,8 +143,6 @@ void complete_word(int pressed_key, vector<int>& positions_vector,  vector<Word>
     //iterator
     vector<int>::iterator element;
     string word_tmp = get_word_to_play(words,word_number);
-    cout << endl << word_tmp;
-
 
     //przejdz przez cale slowo, jesli ktorys z indeksow slowa znajduje sie w position_vectors to zamien ten indeks na wcisnieta litere
     for(int i=0; i<word_tmp.length(); i++)
@@ -152,17 +150,29 @@ void complete_word(int pressed_key, vector<int>& positions_vector,  vector<Word>
        {
          if(i==*element)
          {
-            cout << endl << "indeks slowa= " << i << " element position_vector= " << *element;
             word_tmp[i]=pressed_key;
          }
        }
 
-    cout << endl << "po zamianie word_tmp= " << word_tmp;
-
     ///zamien pole wordToPlay w klasie Word. Tego pola uzyje sie potem do wypisania go na ekran
     ///plus to zmienione slowo bedzie wykorzystane przy nastepnym wywolaniu tej funkcji
     words[word_number].wordToPlay = word_tmp;
+}
 
+///w miare zgadywania liter pole wordToPlay zmienia sie (usuwane sa "-") user wygra jesli pole wordToPlay == pole Word (odgadnie wszystkie litery)
+bool check_win(vector<Word>& words, int word_number)
+{
+    //pobranie pol
+    string tmpWordToPlay = get_word_to_play(words, word_number);
+    string tmpWord = get_word(words, word_number);
+
+    //cout << endl << "Word: " << tmpWord;
+    //cout << endl << "WordToPlay: " << tmpWordToPlay;
+
+    if(tmpWordToPlay.compare(tmpWord)==0)
+        return true;
+    else
+        return false;
 }
 
 #endif // GAME_MECHANICS_HPP_INCLUDED
