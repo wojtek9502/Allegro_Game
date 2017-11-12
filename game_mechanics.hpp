@@ -62,6 +62,9 @@ int rand_word_id(int vector_size)
     words.push_back(Word(17,"ROSLINA","ZYWE I ZIELONE","RSLINA","-O-----"));
     words.push_back(Word(18,"PRZEMEK","NIE LUBI ALLEGRO","PRZEMEK","-------"));
     words.push_back(Word(19,"RODZYNKI","SA W CIESCIE","ROZYNKI","--D-----"));
+    words.push_back(Word(20,"POLICJA","WYJE JAK JEDZIE","POLICJA","-------"));
+    words.push_back(Word(20,"BILARD","GRA Z KIJEM","BILARD","------"));
+    words.push_back(Word(21,"ALKOHOL","KAZDY STUDENT LUBI","ALKOHOL","-------"));
     return words;
 }
 
