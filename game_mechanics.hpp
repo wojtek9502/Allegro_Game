@@ -77,6 +77,11 @@ string get_word(vector<Word>& words, int p_word_number )
     return words[p_word_number].word;
 }
 
+string get_word_to_play(vector<Word>& words, int p_word_number )
+{
+    return words[p_word_number].wordToPlay;
+}
+
 bool check_letter(int pressed_key, vector<Word>& words, int p_word_number, vector<int>& positions_vector)
  {
     int position = 0;
@@ -133,23 +138,31 @@ bool check_letter(int pressed_key, vector<Word>& words, int p_word_number, vecto
      return tmp;
  }
 
-void complete_word(int pressed_key, vector<int>& positions_vector, int wordLenght, char tmpChar[] )
+void complete_word(int pressed_key, vector<int>& positions_vector,  vector<Word>& words, int word_number)
 {
     //iterator
     vector<int>::iterator element;
+    string word_tmp = get_word_to_play(words,word_number);
+    cout << endl << word_tmp;
 
-    ///przejdz przez cale slowo, jesli ktorys z indeksow slowa znajduje sie w position_vectors to zamien ten indeks na wcisnieta litere
-    for(int i=0; i<wordLenght; i++)
-        for(element=positions_vector.begin(); element!=positions_vector.end(); ++element)
-        {
-            if(i==*element)
-            {
-                //cout << endl << "indeks slowa= " << i << " element position_vector= " << *element;
-                tmpChar[i]=pressed_key;
-            }
-        }
 
-    //skopiuj uzywane slowo do const char bo tego wymaga funcja piszaca po ekranie
+    //przejdz przez cale slowo, jesli ktorys z indeksow slowa znajduje sie w position_vectors to zamien ten indeks na wcisnieta litere
+    for(int i=0; i<word_tmp.length(); i++)
+       for(element=positions_vector.begin(); element!=positions_vector.end(); ++element)
+       {
+         if(i==*element)
+         {
+            cout << endl << "indeks slowa= " << i << " element position_vector= " << *element;
+            word_tmp[i]=pressed_key;
+         }
+       }
+
+    cout << endl << "po zamianie word_tmp= " << word_tmp;
+
+    ///zamien pole wordToPlay w klasie Word. Tego pola uzyje sie potem do wypisania go na ekran
+    ///plus to zmienione slowo bedzie wykorzystane przy nastepnym wywolaniu tej funkcji
+    words[word_number].wordToPlay = word_tmp;
+
 }
 
 #endif // GAME_MECHANICS_HPP_INCLUDED

@@ -114,8 +114,6 @@ int main()
         int word_number = rand_word_id(words.size());
 
         ///POBIERANIE WARTOSCI POTRZEBNYCH DO GRY Z KLASY I KONWERSJA NA CHAR[]
-        const char* charCategory = get_data_and_conv(words, word_number, "category", charCategory);
-        const char* charWordToPlay = get_data_and_conv(words, word_number, "wordToPlay", charWordToPlay);
 
 
         //rysujemy gre i usuwamy stare bitmapy menu
@@ -127,6 +125,8 @@ int main()
         //##### PETLA GRY
         while(game_quit_bool == false)
         {
+            const char* charCategory = get_data_and_conv(words, word_number, "category", charCategory);
+            const char* charWordToPlay = get_data_and_conv(words, word_number, "wordToPlay", charWordToPlay);
             clear_to_color(screen, makecol(0, 0, 0));
 
             ///rysuj wisielca
@@ -202,15 +202,8 @@ int main()
                 //charWordToPlay = complete_word(pressed_key, words, word_number);
                 ///pobierz wyraz ktorym grasz
 
-
-                char charTmp[1000] = {0};
-                strcpy(charTmp,charWordToPlay);
-                cout << endl << "do funkcji idzie charTmp: " << charTmp;
-                ///uzupelnij slowo i zwroc juz uzupelnione
-                complete_word(pressed_key, positions_vector, strlen(charTmp),charTmp);
-                cout << endl << "Po uzupelnieniu charTmp: " << charTmp;
-
-                //
+                ///uzupelnij slowo i zmien je w obiekcie na uzupelnione
+                complete_word(pressed_key, positions_vector, words, word_number);
             }
             else
             {
