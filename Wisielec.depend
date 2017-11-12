@@ -2,7 +2,7 @@
 1510402234 source:c:\users\wojtek\documents\codeblocks\wisielec\main.cpp
 	<allegro.h>
 
-1510494443 source:c:\users\wojtek\documents\github\allegro_game\main.cpp
+1510495643 source:c:\users\wojtek\documents\github\allegro_game\main.cpp
 	<iostream>
 	<allegro.h>
 	<time.h>
@@ -13,7 +13,7 @@
 
 1510493031 c:\users\wojtek\documents\github\allegro_game\game_errors.hpp
 
-1510494656 c:\users\wojtek\documents\github\allegro_game\game_mechanics.hpp
+1510495507 c:\users\wojtek\documents\github\allegro_game\game_mechanics.hpp
 	<string>
 	<sstream>
 	<iostream>

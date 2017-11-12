@@ -160,13 +160,9 @@ int main()
                 masked_blit( win, screen, 0, 0, 200, 100, win->w, win->h );
 
                 readkey();
-                game_quit_bool = true;
-                destroy_bitmap(hangman1);
-                destroy_bitmap(hangman2);
-                destroy_bitmap(hangman3);
-                destroy_bitmap(hangman4);
-                destroy_bitmap(hangman5);
-                destroy_bitmap(win);
+
+                lifes=5;
+                word_number=rand_word_id(words.size());
                 continue;
             }
 

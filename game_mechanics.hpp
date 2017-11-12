@@ -93,6 +93,7 @@ bool check_letter(int pressed_key, vector<Word>& words, int p_word_number, vecto
 
 
     //cout << endl << "Wcisnieto " << (char)pressed_key << "    Brakuje: " << delLetters << "     Cale slowo to: " << word;
+    cout << endl << "Wcisnieto " << (char)pressed_key;
 
 
     ///szukanie znaku
