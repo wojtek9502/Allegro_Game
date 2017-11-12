@@ -23,7 +23,6 @@ int main()
     allegro_init();
     install_keyboard();
     install_mouse();
-    install_timer();
     set_color_depth(16);
     set_gfx_mode(GFX_AUTODETECT_WINDOWED, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
     clear_to_color(screen, makecol(0,0,0));
@@ -121,8 +120,7 @@ int main()
 
         cout << "Zaczeto nowa gre";
         //rysujemy gre i usuwamy stare bitmapy menu
-        draw_sprite(screen, bufor, 0, 0);
-        clear_to_color(bufor, makecol(0, 0, 0));
+        clear_to_color(screen, makecol(0, 0, 0));
         destroy_bitmap(menu);
         destroy_bitmap(menu_new_game);
         destroy_bitmap(menu_quit);
@@ -130,14 +128,38 @@ int main()
         //##### PETLA GRY
         while(game_quit_bool == false)
         {
+            clear_to_color(screen, makecol(0, 0, 0));
 
+            ///rysuj wisielca
+            switch(lifes)
+            {
+                case 4:
+                {
+                    masked_blit( hangman1, screen, 0, 0, 200, 100, hangman1->w, hangman1->h );
+                }break;
 
+                case 3:
+                {
+                    masked_blit( hangman2, screen, 0, 0, 200, 100,hangman2->w,hangman2->h );
+                }break;
+
+                case 2:
+                {
+                    masked_blit( hangman3, screen, 0, 0, 200, 100, hangman3->w, hangman3->h );
+                }break;
+
+                case 1:
+                {
+                    masked_blit( hangman4, screen, 0, 0, 200, 100, hangman4->w, hangman4->h );
+                }break;
+            }
+
+            ///jesli brak zyc
             if(lifes==0)
             {
-                clear_to_color(bufor, makecol(0, 0, 0));
-                draw_sprite(screen, bufor, 0, 0);
+                clear_to_color(screen, makecol(0, 0, 0));
                 textout_ex( screen, word_font, "GAME OVER", (SCREEN_WIDTH/2)-100, 500, makecol( 255, 0, 0 ), - 1 );
-                 masked_blit( hangman5, screen, 0, 0, 200, 100, hangman5->w, hangman5->h );
+                masked_blit( hangman5, screen, 0, 0, 200, 100, hangman5->w, hangman5->h );
 
                 readkey();
                 game_quit_bool = true;
@@ -152,6 +174,7 @@ int main()
             if(key[KEY_ESC])
                 game_quit_bool = true;
 
+            ///######## rysuj HUD
             textout_ex( screen, hud_font, "Kategoria:", 20, 20, makecol( 234, 247, 0 ), - 1 );
             //text_length() zwraca ilosc pikseli w napisie slowa
             textout_ex( screen, hud_font, charCategory, text_length(hud_font, "Kategoria:")+30, 20, makecol( 234, 247, 0 ), - 1 );
@@ -163,6 +186,7 @@ int main()
             textout_ex( screen, word_font, charWordToPlay, word_x, 500, makecol( 234, 247, 0 ), - 1 );
 
 
+            ///############## INTERAKCJA Z USEREM
             ///Reakcja na nacisniecie klawisza (konwersja na duza litere)
             int pressed_key = readkey()-32;
             pressed_key_info(pressed_key);
@@ -177,46 +201,14 @@ int main()
 
             if(is_found == true)
             {
-                //dodaj litere do tekstu
+                //jesli zgadl uzupelnij wyraz
                 charWordToPlay = "zrobic uzupelnianie kresek";
             }
             else
             {
+                ///jesli nie zgadl zabierz zycie
                 lifes--;
-                switch(lifes)
-                {
-                    case 4:
-                    {
-                       masked_blit( hangman1, screen, 0, 0, 200, 100, hangman1->w, hangman2->h );
-                    }break;
-
-                    case 3:
-                    {
-                       masked_blit( hangman2, screen, 0, 0, 200, 100, hangman2->w, hangman2->h );
-                    }break;
-
-                    case 2:
-                    {
-                       masked_blit( hangman3, screen, 0, 0, 200, 100, hangman3->w, hangman3->h );
-                    }break;
-
-                    case 1:
-                    {
-                       masked_blit( hangman4, screen, 0, 0, 200, 100, hangman4->w, hangman4->h );
-                    }break;
-                }
-                //odbierz zycie i narysuj wisielca
             }
-
-
-            //masked_blit( hangman1, screen, 0, 0, 170, 110, hangman1->w, hangman1->h );
-
-
-            //readkey();
-            //destroy_bitmap(hangman1)
-
-
-
         }
     }
     else
