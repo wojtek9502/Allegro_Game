@@ -1,6 +1,7 @@
 #include <iostream>
 #include <allegro.h>
 #include <time.h>
+#include <string.h>
 #include "game_errors.hpp"
 #include "game_mechanics.hpp"
 #include <vector>
@@ -117,8 +118,6 @@ int main()
         const char* charWordToPlay = get_data_and_conv(words, word_number, "wordToPlay", charWordToPlay);
 
 
-
-        cout << "Zaczeto nowa gre";
         //rysujemy gre i usuwamy stare bitmapy menu
         clear_to_color(screen, makecol(0, 0, 0));
         destroy_bitmap(menu);
@@ -189,7 +188,6 @@ int main()
             ///############## INTERAKCJA Z USEREM
             ///Reakcja na nacisniecie klawisza (konwersja na duza litere)
             int pressed_key = readkey()-32;
-            pressed_key_info(pressed_key);
 
             ///wektor na indeksy znalezionych liter
             vector<int> positions_vector;
@@ -197,12 +195,22 @@ int main()
             //sprawdz czy wcisnieta litera zwiera sie w slowe
             //jesli nie to zwroc false jesli tak to zwroc wektor pozycji liter w wyrazie i zwroc true
             bool is_found = check_letter(pressed_key,words,word_number, positions_vector );
-            print_position_vector(positions_vector);
 
             if(is_found == true)
             {
                 //jesli zgadl uzupelnij wyraz
-                charWordToPlay = "zrobic uzupelnianie kresek";
+                //charWordToPlay = complete_word(pressed_key, words, word_number);
+                ///pobierz wyraz ktorym grasz
+
+
+                char charTmp[1000] = {0};
+                strcpy(charTmp,charWordToPlay);
+                cout << endl << "do funkcji idzie charTmp: " << charTmp;
+                ///uzupelnij slowo i zwroc juz uzupelnione
+                complete_word(pressed_key, positions_vector, strlen(charTmp),charTmp);
+                cout << endl << "Po uzupelnieniu charTmp: " << charTmp;
+
+                //
             }
             else
             {

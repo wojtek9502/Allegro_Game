@@ -51,7 +51,7 @@ int rand_word_id(int vector_size)
 
 const char* get_data_and_conv(vector<Word>& words, int p_word_number, string field_in_class, const char* string_array)
 {
-    words[p_word_number].print();
+    ///words[p_word_number].print();
 
     if(field_in_class.compare("category")==0)
         return words[p_word_number].category.c_str();
@@ -84,20 +84,18 @@ bool check_letter(int pressed_key, vector<Word>& words, int p_word_number, vecto
     string delLetters = get_del_letters(words,p_word_number);
     string word = get_word(words,p_word_number);
 
-    cout << "    Brakuje: " << delLetters << "     Cale slowo to: " << word;
+    //cout << "    Brakuje: " << delLetters << "     Cale slowo to: " << word;
 
     ///szukanie znaku
     position = word.find( c_pressed_key);
     if( position == string::npos )
     {
-        cout << endl << "char not found.";
         return false;
     }
     else
     {
         do
         {
-            cout << endl << "char found on position: " << position;
             positions_vector.push_back(position);
             position = word.find( c_pressed_key, position + 1 );
         } while( position != string::npos );
@@ -129,6 +127,29 @@ bool check_letter(int pressed_key, vector<Word>& words, int p_word_number, vecto
      cout << endl;
  }
 
+ char int_to_char(int number)
+ {
+     char tmp = (char) number;
+     return tmp;
+ }
 
+void complete_word(int pressed_key, vector<int>& positions_vector, int wordLenght, char tmpChar[] )
+{
+    //iterator
+    vector<int>::iterator element;
+
+    ///przejdz przez cale slowo, jesli ktorys z indeksow slowa znajduje sie w position_vectors to zamien ten indeks na wcisnieta litere
+    for(int i=0; i<wordLenght; i++)
+        for(element=positions_vector.begin(); element!=positions_vector.end(); ++element)
+        {
+            if(i==*element)
+            {
+                //cout << endl << "indeks slowa= " << i << " element position_vector= " << *element;
+                tmpChar[i]=pressed_key;
+            }
+        }
+
+    //skopiuj uzywane slowo do const char bo tego wymaga funcja piszaca po ekranie
+}
 
 #endif // GAME_MECHANICS_HPP_INCLUDED
