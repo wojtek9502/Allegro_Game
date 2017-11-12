@@ -40,13 +40,24 @@ int rand_word_id(int vector_size)
 
  vector<Word> generate_words( vector<Word>& words)
 {
-    ///dodawanie slow tutaj wg wzoru (id, slowo, kategoria, litery_do_usuniecia, gotowe slowo)
-
-    words.push_back(Word(0,"SPRZEDAWCA","ZAWOD","EWCA","SPRZ-D----"));
-    words.push_back(Word(1,"KARTOFEL","WARZYWO","AROEL","K--T-F--"));
-    words.push_back(Word(2,"MATEMATYKA","PRZEDMIOT SZKOLNY","ATEY","M---M---K-"));
+    ///dodawanie slow tutaj wg wzoru (id, slowo, kategoria, litery_do_usuniecia(moga sie powtarzac), gotowe slowo)
+    //
+    words.push_back(Word(0,"SPRZEDAWCA","ZAWOD","SPRZEDAWCA","----------"));
+    words.push_back(Word(1,"KARTOFEL","WARZYWO","KARTOEL","-----F--"));
+    words.push_back(Word(2,"MATEMATYKA","PRZEDMIOT SZKOLNY","MATEMATYKA","----------"));
     words.push_back(Word(3,"BIEDRONKA","ZWIERZE","BIERONA","---D---K-"));
     words.push_back(Word(4,"PENDRIVE","URZADZENIE","PENDIVE","----R---"));
+    words.push_back(Word(5,"KIERUNKOWSKAZ","ELEMENT AUTA","KIERUNKOWKA","---------S--Z"));
+    words.push_back(Word(6,"STOKROTKA","KWIAT","STOKROTKA","---------"));
+    words.push_back(Word(7,"KANCELARIA","MIEJSCE","KANCELA","-------RI-"));
+    words.push_back(Word(8,"PROKURATOR","OSOBA","PROKURATOR","----------"));
+    words.push_back(Word(9,"INFORMATYKA","NAUKA","INFORMATYKA","-----------"));
+    words.push_back(Word(10,"KAZACHSTAN","PANSTWO","KAZACHSTAN","----------"));
+    words.push_back(Word(11,"FRANKFURT","MIASTO","FRANKFRT","------U--"));
+    words.push_back(Word(12,"ARYSTOTELES","OSOBA","ARSTOTELES","--Y--------"));
+    words.push_back(Word(13,"NIETZSCHE","FILOZOF","NIETSCHE","----Z----"));
+    words.push_back(Word(14,"GOWIN","MINISTER","GOWIN","-----"));
+    words.push_back(Word(15,"KLAWIATURA","URZADZENIE","KLAWIATURA","----------"));
     return words;
 }
 

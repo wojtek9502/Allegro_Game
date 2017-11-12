@@ -156,7 +156,7 @@ int main()
             if(check_win(words, word_number) == true)
             {
                 clear_to_color(screen, makecol(0, 0, 0));
-                textout_ex( screen, word_font, "YOU WIN", (SCREEN_WIDTH/2)-100, 500, makecol( 234, 247, 0 ), - 1 );
+                textout_ex( screen, word_font, "WYGRANA", (SCREEN_WIDTH/2)-100, 500, makecol( 234, 247, 0 ), - 1 );
                 masked_blit( win, screen, 0, 0, 200, 100, win->w, win->h );
 
                 readkey();
@@ -169,8 +169,13 @@ int main()
             ///jesli brak zyc
             if(lifes==0)
             {
+                const char *game_over_word = get_data_and_conv(words, word_number, "word",game_over_word);
                 clear_to_color(screen, makecol(0, 0, 0));
                 textout_ex( screen, word_font, "GAME OVER", (SCREEN_WIDTH/2)-100, 500, makecol( 255, 0, 0 ), - 1 );
+
+                textout_ex( screen, word_font, "Slowo to" , (SCREEN_WIDTH/2)-150, 540, makecol( 255, 0, 0 ), - 1 );
+                textout_ex( screen, word_font, game_over_word , (SCREEN_WIDTH/2)-10, 540, makecol( 255, 0, 0 ), - 1 );
+
                 masked_blit( hangman5, screen, 0, 0, 200, 100, hangman5->w, hangman5->h );
 
                 readkey();
