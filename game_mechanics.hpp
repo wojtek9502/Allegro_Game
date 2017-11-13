@@ -65,6 +65,7 @@ int rand_word_id(int vector_size)
     words.push_back(Word(20,"POLICJA","WYJE JAK JEDZIE","POLICJA","-------"));
     words.push_back(Word(20,"BILARD","GRA Z KIJEM","BILARD","------"));
     words.push_back(Word(21,"ALKOHOL","KAZDY STUDENT LUBI","ALKOHOL","-------"));
+    words.push_back(Word(22,"VIVUS","CHWILOWKA","IUS","V-V--"));
     return words;
 }
 

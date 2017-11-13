@@ -77,7 +77,7 @@ int main()
         //####Obs³uga menu
 
         ///po najechaniu na new_game narysuj menu_new_game.bmp, po kliknieciu graj
-        if(mouse_x > 242 && mouse_x < 628 && mouse_y > 274 && mouse_y < 323)
+        if(/*mouse_x > 242 && mouse_x < 628 && */mouse_y > 274 && mouse_y < 323)
         {
             draw_sprite(screen, menu_new_game, 0, 0);
             if(mouse_b == 1)
@@ -87,7 +87,7 @@ int main()
             }
         }
         ///po najechaniu na quit narysuj menu_quit.bmp, po kliknieciu wyjdz
-        else if(mouse_x > 242 && mouse_x < 410 && mouse_y > 350 && mouse_y < 414)
+        else if(/*mouse_x > 242 && mouse_x < 410 && */mouse_y > 350 && mouse_y < 414)
         {
             draw_sprite(screen, menu_quit, 0, 0);
             if(mouse_b == 1)
