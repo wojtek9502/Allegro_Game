@@ -2,6 +2,7 @@
 #include <allegro.h>
 #include <time.h>
 #include <string.h>
+#include <stdio.h>
 #include "game_errors.hpp"
 #include "game_mechanics.hpp"
 #include <vector>
@@ -13,6 +14,7 @@ using namespace std;
 bool menu_quit_bool = false;
 bool new_game_clicked = false;
 bool game_quit_bool = false;
+int win_counter=0;
 
 
 int main()
@@ -71,8 +73,7 @@ int main()
     //################################################-----PETLA MENU-----#######################################3
     while( menu_quit_bool == false )
     {
-        if(key[KEY_ESC])
-            menu_quit_bool = true;
+
 
         //####Obs³uga menu
 
@@ -124,6 +125,7 @@ int main()
         //##### PETLA GRY
         while(game_quit_bool == false)
         {
+
             const char* charCategory = get_data_and_conv(words, word_number, "category", charCategory);
             const char* charWordToPlay = get_data_and_conv(words, word_number, "wordToPlay", charWordToPlay);
             clear_to_color(screen, makecol(0, 0, 0));
@@ -162,6 +164,7 @@ int main()
                 readkey();
 
                 lifes=5;
+                win_counter++;
                 word_number=rand_word_id(words.size());
                 continue;
             }
@@ -197,11 +200,17 @@ int main()
             //text_length() zwraca ilosc pikseli w napisie slowa
             textout_ex( screen, hud_font, charCategory, text_length(hud_font, "Kategoria:")+30, 20, makecol( 234, 247, 0 ), - 1 );
 
-            textout_ex( screen, hud_font, "Pozostalo zyc:", 620, 20, makecol( 234, 247, 0 ), - 1 );
-            textout_ex( screen, hud_font, int_to_const_char(lifes), 620+text_length(hud_font, "Pozostalo zyc:")+10, 20 , makecol( 234, 247, 0 ), - 1 );
+            textout_ex( screen, hud_font, "Pozostalo zyc:", 550, 20, makecol( 234, 247, 0 ), - 1 );
+            textout_ex( screen, hud_font, int_to_const_char(lifes), 550+text_length(hud_font, "Pozostalo zyc:")+10, 20 , makecol( 234, 247, 0 ), - 1 );
+
+            textout_ex( screen, hud_font, "Zgadles/as juz:", 550, 50, makecol( 234, 247, 0 ), - 1 );
+            textout_ex( screen, hud_font, int_to_const_char(win_counter), 690, 50, makecol( 234, 247, 0 ), - 1 );
+            textout_ex( screen, hud_font, "razy", 730, 50, makecol( 234, 247, 0 ), - 1 );
+
 
             int word_x = (SCREEN_WIDTH/2)-(text_length(word_font,charWordToPlay)/2);
             textout_ex( screen, word_font, charWordToPlay, word_x, 500, makecol( 234, 247, 0 ), - 1 );
+
 
 
             ///############## INTERAKCJA Z USEREM
