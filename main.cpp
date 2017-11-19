@@ -104,6 +104,7 @@ int main()
     //##################################################---GRA---###########################
     if(new_game_clicked == true)
     {
+        clear_keybuf();
         int lifes = 5;
         ///wektor slow
         vector<Word> words;
